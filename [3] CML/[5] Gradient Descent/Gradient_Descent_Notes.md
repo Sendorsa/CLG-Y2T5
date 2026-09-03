@@ -13,19 +13,27 @@
 - This concept is critical for understanding how models learn and improve
 
 ### 2. Gradient Descent Mechanics
-- Involves iterative updates along the gradient (direction of steepest ascent)
-- Parameters are updated in the opposite direction of the gradient to minimize loss
-- The "chain" reference likely relates to chain rule used in backpropagation
+- Involves iterative updates in the opposite direction of the gradient (steepest descent)
+- Parameters: θ = θ - η * ∇J(θ)  
+  where η is the learning rate and ∇J(θ) is the gradient of the cost function
+- The "chain" reference relates to chain rule used in backpropagation
 
-### 3. Learning Rate / Insight
-- Three types of insights mentioned:
-  - Creative insight
-  - Gradient insight
-  - Related concepts tied to optimization
-- Learning rate determines step size during updates
-- Must be carefully chosen — too large causes divergence, too small causes slow convergence
+### 4. Learning Rate
+- Determines the step size during each parameter update
+- Must be carefully chosen:
+  - Too large → divergence (overshoots minimum)
+  - Too small → slow convergence
+- Learning rate strategies:
+  - Fixed constant learning rate
+  - Adaptive methods (Adam, RMSprop, Adagrad)
+  - Learning rate decay/scheduling
 
-### 4. Convergence
+### 5. Variants of Gradient Descent
+- Batch GD: uses entire dataset per update — accurate but slow for large data
+- Stochastic GD (SGD): uses single sample per update — fast but noisy
+- Mini-batch GD: uses small batches per update — balances speed and stability; most commonly used
+
+### 6. Convergence
 - Model should approach convergence (optimal point)
 - Loss curve monitoring is important to verify training progress
 - Helps ensure the model is learning effectively
