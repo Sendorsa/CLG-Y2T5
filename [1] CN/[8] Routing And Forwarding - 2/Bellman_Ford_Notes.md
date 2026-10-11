@@ -49,7 +49,7 @@ if distance[u] + w < distance[v]:
 - New distance to node 1: `0 + 5 = 5`
 - Since `5 < ∞`, **update** `distance[1] = 5`
 
-#### Subsequent Edges (illustrative)
+#### Subsequent Edges (per-edge relaxation within one pass)
 
 | Edge | Calculation | Resulting Distance Array |
 |------|-------------|--------------------------|
@@ -119,7 +119,7 @@ Final minimum distances from node 0:
   Node 1: 5
   Node 2: 6
   Node 3: 6   ← improved by negative weight edge
-   Node 4: 7
+  Node 4: 7
 ```
 
 ---
@@ -136,7 +136,7 @@ Final minimum distances from node 0:
 
 **Graph Connectivity in Highly Connected Networks:**
 - In a highly connected graph, the number of edges relates to the vertices as **E ≈ O(V²)**.
-- The maximum possible number of edges is derived from the formula: **(N × (N - 1)) / 2 ≈ N²**.
+- The maximum possible number of edges **(undirected graphs)** is derived from: **(N × (N - 1)) / 2 ≈ N²**.
 
 **Limitations:**
 - Bellman-Ford is not used in large networks due to inefficiencies and potential for infinite loops.
