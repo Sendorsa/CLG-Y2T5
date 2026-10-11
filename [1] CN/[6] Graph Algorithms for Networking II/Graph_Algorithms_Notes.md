@@ -1,5 +1,9 @@
 # Graph Algorithms for Networking II — Notes
 
+## Overview
+
+In this session, we explored depth-first search (DFS) and breadth-first search (BFS) as techniques to traverse and analyze graphs. The focus was on applying DFS to solve a grid problem by treating it as a graph to count islands, and on understanding BFS to find the shortest path in an unweighted graph. Additionally, we discussed how DFS can be adapted to detect cycles within graphs.
+
 ## Topics Covered
 
 ---
@@ -112,12 +116,14 @@ Queue operations:
 **Pseudo-code:**
 
 ```python
+from collections import deque
+
 def shortestDistance(adj, src, dst):
-    queue = [(src, 0)]       # (node, distance)
+    queue = deque([(src, 0)])       # (node, distance)
     visited = {src}
     
     while queue:
-        node, dist = queue.pop(0)
+        node, dist = queue.popleft()
         
         if node == dst:
             return dist
@@ -147,6 +153,19 @@ def shortestDistance(adj, src, dst):
 
 1. **Determine time complexity of DFS** — explain your reasoning.
 2. **Modify BFS for weighted graphs** with positive edge weights (hint: this leads to **Dijkstra's algorithm**). Negative weights are excluded.
+
+---
+
+### Analogies
+
+- **BFS ≈ Level-order traversal** of a binary tree — all nodes at a given distance from the start are visited before any farther node.
+- **DFS ≈ Depth-first exploration** (think maze-solving: go as deep as possible, backtrack when stuck).
+
+---
+
+### Conclusion
+
+In this session, we reinforced the fundamentals of DFS and BFS for solving graph-related problems. DFS is powerful for exploring and solving problems involving pathfinding and cycle detection, while BFS excels in finding shortest paths in unweighted graphs. These graph traversal techniques are critical in optimizing network pathways, navigating hierarchical structures, and solving complex connectivity issues in computer science applications.
 
 ---
 
@@ -193,3 +212,20 @@ def shortestDistance(adj, src, dst):
 - **Connected Components** — counting independent subgraphs in disconnected graphs (requires iterating over all unvisited nodes, not just the source).
 - **Bidirectional BFS** — optimized shortest path using forward and reverse searches meeting in the middle.
 - **Cycle detection in directed graphs** — uses DFS with recursion stack tracking (three states: unvisited, visiting, visited).
+
+## Glossary
+
+| Term | Definition |
+|---|---|
+| Adjacency List | A collection of lists used to represent graph nodes and their connections; each node stores its neighboring nodes. Space-efficient for sparse graphs. |
+| Adjacency Matrix | A 2D array used to represent edges between nodes in a graph; `matrix[i][j] = 1` (or weight) if an edge exists from node *i* to node *j*. Space-inefficient for sparse graphs but fast edge lookup. |
+| Binary Tree Traversals | Methods of visiting all the nodes in a binary tree: **in-order** (left → root → right), **pre-order** (root → left → right), and **post-order** (left → right → root). |
+| Breadth-First Search (BFS) | A graph traversal algorithm that explores all neighbors at the current depth before moving deeper; uses a FIFO queue to track nodes to explore next. Guarantees shortest path in unweighted graphs. |
+| Connected Components | Subsets of a graph where each pair of nodes is reachable from any other node within the same subset; in disconnected graphs, there are multiple such subsets. |
+| Cycle in Graph | A traversal starting and ending at the same node without reusing edges; indicates redundant routing paths in network contexts. |
+| Depth-First Search (DFS) | A graph traversal algorithm that explores as deep as possible along each branch before backtracking; uses an implicit or explicit stack. Useful for reachability, cycle detection, and connected components. |
+| Graph Representation | Structures used to represent graphs: **adjacency lists** (efficient for sparse graphs) and **adjacency matrices** (efficient for dense graphs). Choice affects algorithm complexity. |
+| Queue | A FIFO (first-in-first-out) data structure used in BFS to maintain level-by-level exploration order; ensures nodes are processed in the correct distance sequence. |
+| Shortest Path | The minimum number of edges or minimum total weight path between two vertices in a graph; BFS solves it for unweighted graphs, Dijkstra's for weighted graphs with positive edges. |
+| Visited Array / Set | A data structure (array or hash set) used in graph traversal algorithms to keep track of which nodes have already been visited, preventing infinite loops and redundant work. |
+| Weighted Graph | A graph in which each edge is assigned a numerical weight representing cost, distance, or capacity between nodes; algorithms must account for weights during traversal (e.g., Dijkstra's algorithm). |
