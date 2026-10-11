@@ -3,13 +3,18 @@
 ## 1. Context: Where Routing Fits in Network Layers
 
 - **OSI Model** has 7 layers; routing happens at the **Network Layer** (Layer 3)
-- **Layers 1-3** combined = Application layer
-  - Layer 4: Presentation layer (data formatting, encryption)
+- Standard OSI layers (bottom to top):
+  - Layer 1: Physical layer
+  - Layer 2: Data Link layer
+  - Layer 3: Network layer (**routing happens here**)
+  - Layer 4: Transport layer (TCP/UDP)
   - Layer 5: Session layer
-  - Layer 6: Transport layer (TCP/UDP)
-  - Layer 7: Network layer (**routing happens here**)
+  - Layer 6: Presentation layer (data formatting, encryption)
+  - Layer 7: Application layer
 - Application-layer protocols determine **how** data is formatted for server recognition
 - Actual data transfer across the internet requires routing through a physical network of routers
+- **Application Layer:** The top layer of the OSI model responsible for network applications
+- **Intranet:** A private network confined within an organization or entity
 
 ## 2. The Internet as a Graph
 
@@ -70,11 +75,29 @@ This is exactly why graph algorithms are essential for routing.
 ### Weighted Graph
 - Each edge has a **numerical weight/cost/value** attached
 - Map context: physical distances (e.g., 5km, 30km, 150km) between points
+  - **Why this matters:** In the example below, without weights you'd assume path A→B→C is shortest (2 hops). But with weights: A→B=150km, B→C=30km vs A→D=5km, D→E=2km, E→C=1km -- the weighted path is 8km vs 180km despite being more hops
 - Social media context: weights represent likelihood of **user engagement** (Instagram shows posts from profiles most likely to engage)
 
 ### Unweighted Graph
 - All edges have **equal cost** (binary: connected / not connected)
 - Example: simple connectivity check between routers
+
+---
+
+## Key Terms Glossary
+
+| Term | Definition |
+|------|-----------|
+| **Graph** | A network of interconnected nodes and edges |
+| **Routing** | The process of moving packets across a network from source to destination |
+| **Weighted Graph** | A graph where edges have associated weights or costs |
+| **Undirected Graph** | A graph where edges have no direction, allowing bidirectional travel |
+| **Directed Graph** | A graph where edges have a specific direction, indicating one-way travel |
+| **Adjacency Matrix** | A square matrix used to represent a graph, indicating edges between nodes |
+| **Adjacency List** | A collection of lists or arrays used to represent a graph's edges |
+| **DFS (Depth First Search)** | Graph traversal algorithm exploring depth before breadth |
+| **BFS (Breadth First Search)** | Graph traversal algorithm exploring breadth before depth |
+| **Cycle** | A path in a graph where the start and end nodes are the same |
 
 ---
 
